@@ -1,0 +1,59 @@
+action_values: [0, 50, 100]
+activation: tanh
+batch_size: 256
+clip_range: 0.4
+delta: 0.05
+dim_hidden_layers: [256, 126]
+ent_coef: 1.0e-05
+filename: data_price_uni_h_time.csv
+gae_lambda: 0.9999
+gamma: 0.9
+gas_fee: 5
+grid: [ent_coef, gamma, clip_range]
+hyperparameters:
+  action_values:
+  - - [0, 10, 15, 20]
+    - [0, 10, 20, 30]
+    - [0, 25, 50]
+    - [0, 45, 50, 55]
+    - [0, 50, 100]
+  - cat
+  activation:
+  - [relu, tanh]
+  - cat
+  clip_range:
+  - [0.1, 0.2, 0.3, 0.4]
+  - cat
+  dim_hidden_layers:
+  - - [32, 32]
+    - [64, 64]
+    - [128, 128]
+    - [128, 64, 32]
+    - [64, 32]
+    - [128, 64]
+    - [256, 126]
+  - cat
+  ent_coef:
+  - [1.0e-05, 0.01, 0.001, 0.0001]
+  - cat
+  gamma:
+  - [0.9, 0.99, 0.999, 0.9999]
+  - cat
+  learning_rate:
+  - [0.01, 0.001, 0.0001, 1.0e-05, 0.0003, 0.005, 0.0005, 5.0e-05]
+  - cat
+learning_rate: 0.005
+ma_window: 10
+model_name: ppo_custom_env_20241001_1
+model_to_load: ppo_custom_env_20241001
+n_trials: 10
+num_epochs: 5
+pct_split: 0.9
+random_sampler: false
+seed: 256
+target_kl: 0.3
+total_timesteps: 1000000
+total_timesteps_1: 100000
+train_model: false
+vf_coef: 0.1
+x: 10

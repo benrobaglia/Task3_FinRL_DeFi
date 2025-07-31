@@ -1,0 +1,10 @@
+requests
+pandas
+numpy
+gymnasium
+stable_baselines3
+optuna
+torch
+pyyaml
+pandas_datareader
+talib
