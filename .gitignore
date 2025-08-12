@@ -1,6 +1,34 @@
-evaluation_results/
-plot/
-test.csv
-uniswap_test2.py
-.DS_Store
+# Data folders
+src/data/
+src/evaluation_results/
+src/plot/
+
+# Output folders except the needed one
+src/output/*
+!src/output/20250726_PPOUniswap_CVRFE/
+
+# Notebooks and plots
+*.ipynb
+*.png
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment files
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE files
 .vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
