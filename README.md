@@ -49,7 +49,7 @@ This will:
 
 To run the enhanced implementation with walking forward validation:
 ```bash
-python src/uniswap_cvrfe_ppo.py --config src/config/uniswap_rl_param_2707.yaml
+python src/uniswap_cvrfe_ppo.py
 ```
 
 This will:
@@ -82,17 +82,42 @@ Results are organized by experiment date in:
 
 The `src/evaluate_agent.py` script is used to evaluate a pre-trained reinforcement learning agent on a specified dataset. This script loads a trained policy and runs it on the provided market data to assess its performance.
 
-To evaluate an agent, run the script with the `--data_file` argument pointing to your evaluation data (CSV format):
+### Usage
 
 ```bash
-python src/evaluate_agent.py --data_file path/to/your/evaluation_data.csv
+python src/evaluate_agent.py --data_file path/to/your/evaluation_data.csv [--window WINDOW_NUM] [--expname EXPERIMENT_NAME]
 ```
 
-This will:
-1. Load the specified data file.
-2. Load the pre-trained policy (configured within the script).
-3. Run the policy on the evaluation data.
-4. Save the evaluation results to `evaluation_results.csv`.
+### Arguments
+
+- `--data_file`: (Required) Path to the evaluation data file (CSV format)
+- `--window`: (Optional) Window number to use (0-15, default: 15). This selects which trained model to evaluate. **Window 15 is the default as it represents the model trained on the latest available data.**
+- `--expname`: (Optional) Experiment name (default: "20250807_PPOUniswap_CVRFE")
+
+### Example
+
+```bash
+# Evaluate using the default window 15 model (latest data)
+python src/evaluate_agent.py --data_file src/test_set.csv
+
+# Evaluate using a specific window model
+python src/evaluate_agent.py --data_file src/test_set.csv --window 9
+
+# Evaluate using a different experiment
+python src/evaluate_agent.py --data_file src/test_set.csv --window 5 --expname 20250723_PPOUniswap_RFE
+```
+
+### What the script does:
+
+1. **Loads the best configuration** from study results for the specified window
+2. **Loads the trained models**: PPO policy, Random Forest feature selection model, and feature information
+3. **Processes the evaluation data** through the same feature engineering pipeline used during training
+4. **Computes volatility predictions** using the trained Random Forest model
+5. **Creates the test environment** with the processed features and configuration
+6. **Runs the trained PPO agent** on the evaluation data deterministically
+7. **Saves evaluation results** to `evaluation_results_window_{WINDOW_NUM}.csv`
+
+The script automatically handles different model formats and paths, and provides detailed logging of the evaluation process including step-by-step rewards and final performance metrics.
 
 ## Configuration Files
 
