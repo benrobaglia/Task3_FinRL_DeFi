@@ -3,10 +3,6 @@ src/data/
 src/evaluation_results/
 src/plot/
 
-# Output folders except the needed one
-src/output/*
-!src/output/20250726_PPOUniswap_CVRFE/
-
 # Notebooks and plots
 *.ipynb
 *.png
