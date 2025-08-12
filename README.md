@@ -78,7 +78,7 @@ Results are organized by experiment date in:
   - `study_result_rolling_*.csv`: Training metrics
 - `src/data/[expname]/`: Contains test histories and feature importance results
 
-## Evaluating a Trained Agent
+## Evaluating a Trained Agent 
 
 The `src/evaluate_agent.py` script is used to evaluate a pre-trained reinforcement learning agent on a specified dataset. This script loads a trained policy and runs it on the provided market data to assess its performance.
 
