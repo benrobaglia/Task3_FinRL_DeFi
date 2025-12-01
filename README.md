@@ -1,5 +1,7 @@
 # FinRL DeFi Project - Uniswap Trading Agent
 
+Winner – 1st place, FinAI Contest 2025 (Task 3), IEEE International Conference on Cyber Security and Cloud Computing.
+
 This repository contains the code to reproduce results for the paper:
 
 **DeFi Liquidity Provisioning with Reinforcement Learning and Dynamic Feature Selection**
